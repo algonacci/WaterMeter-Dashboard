@@ -10,6 +10,7 @@ from flask import Flask, render_template, request
 from google.cloud import vision
 from google.oauth2.service_account import Credentials
 from werkzeug.utils import secure_filename
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg'])
@@ -78,7 +79,21 @@ def index():
 def history():
     df = pd.read_csv("ocr_results.csv")
     df['result_text'] = df['result_text'].astype(str).str.zfill(7)
-    return render_template("history.html", df=df)
+    
+    # plot the line chart
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(df['timestamp'], df['result_text'])
+    ax.set_xlabel('Timestamp')
+    ax.set_ylabel('Result Text')
+    ax.set_title('Result Text Trend')
+    
+    # save the plot to a file
+    plot_path = 'static/result/plot.png'
+    if not os.path.exists(os.path.dirname(plot_path)):
+        os.makedirs(os.path.dirname(plot_path))
+    plt.savefig(plot_path)
+    
+    return render_template("history.html", df=df, plot_path=plot_path)
 
 
 if __name__ == "__main__":
