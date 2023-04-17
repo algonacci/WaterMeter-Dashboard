@@ -2,3 +2,8 @@ timestamp,uploaded_image_path,cropped_image_path,result_text
 2023-04-16 17:30:34,static/uploads/5.jpg,static/result/cropped_image_ce2d632c-b8c0-4b3c-b810-48d85d95df12.jpg,0269118
 
 2023-04-16 17:30:34,static/uploads/9.jpg,static/result/cropped_image_88bad10c-3b8b-4bab-8004-0dd283409387.jpg,0372182
+
+2023-04-17 07:09:49,static/uploads/20.jpg,static/result/cropped_image_da1c2dfc-2c6e-4f12-a161-c62f84314ae2.jpg,0133092
+
+2023-04-17 07:12:35,static/uploads/3.jpg,static/result/cropped_image_fa2b96a1-b9aa-40b3-abb9-faba56c03c8a.jpg,02465
+2023-04-17 07:27:48,static/uploads/14.jpg,static/result/cropped_image_4b300242-1c12-4d25-b5bf-ac67ac1522f8.jpg,0295885
