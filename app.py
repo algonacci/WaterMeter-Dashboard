@@ -81,18 +81,18 @@ def index():
 @app.route("/history")
 def history():
     df = pd.read_csv("ocr_results.csv")
-    df = df.dropna(subset=['result_text'])  # drop rows with invalid data
-    df['result_text'] = df['result_text'].astype(str).str.zfill(7)
-
-    # sort data by timestamp
     df = df.sort_values(by=['timestamp'])
+    x = list(range(len(df)))
+    data = [int(val) for val in df['result_text'].iloc[:]]
 
-    # plot the line chart
     fig, ax = plt.subplots(figsize=(12, 6))
-    ax.plot(df['timestamp'], df['result_text'])
-    ax.set_xlabel('Timestamp')
+    ax.plot(x, data, marker='o', markersize=8,
+            linestyle='-', linewidth=1, label='Result Text')
+    ax.set_xlabel('Data Point')
     ax.set_ylabel('Result Text')
     ax.set_title('Result Text Trend')
+    for i, val in enumerate(data):
+        ax.text(x[i], data[i], str(val), ha='center', va='bottom')
 
     # save the plot to a file
     plot_path = 'static/result/plot.png'
