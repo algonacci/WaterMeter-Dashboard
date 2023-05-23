@@ -5,6 +5,10 @@ timestamp,uploaded_image_path,cropped_image_path,result_text
 
 2023-04-17 07:09:49,static/uploads/20.jpg,static/result/cropped_image_da1c2dfc-2c6e-4f12-a161-c62f84314ae2.jpg,0133092
 
-2023-04-17 07:12:35,static/uploads/3.jpg,static/result/cropped_image_fa2b96a1-b9aa-40b3-abb9-faba56c03c8a.jpg,02465
-2023-04-17 07:27:48,static/uploads/14.jpg,static/result/cropped_image_4b300242-1c12-4d25-b5bf-ac67ac1522f8.jpg,0295885
-2023-05-07 12:56:21,static/uploads/5.jpg,static/result/cropped_image_9fae4a27-44f3-4f59-8d0a-208f366a1369.jpg,0269118
+2023-04-17 07:12:35,static/uploads/3.jpg,static/result/cropped_image_fa2b96a1-b9aa-40b3-abb9-faba56c03c8a.jpg,02465
+
+2023-04-17 07:27:48,static/uploads/14.jpg,static/result/cropped_image_4b300242-1c12-4d25-b5bf-ac67ac1522f8.jpg,0295885
+
+2023-05-07 12:56:21,static/uploads/5.jpg,static/result/cropped_image_9fae4a27-44f3-4f59-8d0a-208f366a1369.jpg,0269118
+
+2023-05-23 17:22:03,static/uploads/3.jpg,static/result/cropped_image_7c778bdd-6651-4ede-8813-40c7b743e35f.jpg,02465
