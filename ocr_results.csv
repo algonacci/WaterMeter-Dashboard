@@ -12,3 +12,13 @@ timestamp,uploaded_image_path,cropped_image_path,result_text
 2023-05-07 12:56:21,static/uploads/5.jpg,static/result/cropped_image_9fae4a27-44f3-4f59-8d0a-208f366a1369.jpg,0269118
 
 2023-05-23 17:22:03,static/uploads/3.jpg,static/result/cropped_image_7c778bdd-6651-4ede-8813-40c7b743e35f.jpg,02465
+
+2023-05-26 07:48:08,static/uploads/photo_2023-05-26_07-39-34.jpg,static/result/cropped_image_8dec866b-149d-455f-90e7-11679a8dae26.jpg,034303
+
+2023-05-26 08:16:49,static/uploads/photo_2023-05-26_07-39-34_2.jpg,static/result/cropped_image_06c17d1c-820f-43ce-8689-6710c30efa4b.jpg,0372182
+
+2023-05-26 08:19:44,static/uploads/final.jpg,static/result/cropped_image_b0c58d28-8aab-44f6-b8c2-a00662760d87.jpg,0295885
+
+2023-05-26 08:24:18,static/uploads/final.jpg,static/result/cropped_image_e4516b59-860d-4f6a-accc-af6a9d165d17.jpg,0295885
+2023-05-26 08:25:18,static/uploads/final.jpg,static/result/cropped_image_ff959197-78ef-4c6a-85ec-15468977826f.jpg,0295885
+2023-05-26 08:26:17,static/uploads/final.jpg,static/result/cropped_image_2da0f0a6-51e8-4ed8-b1d3-1d3d168c765f.jpg,0295885
