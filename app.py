@@ -11,6 +11,7 @@ from flask import Flask, render_template, request
 from google.cloud import vision
 from google.oauth2.service_account import Credentials
 from werkzeug.utils import secure_filename
+import easyocr
 
 plt.switch_backend('agg')
 
@@ -20,6 +21,7 @@ app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 creds = Credentials.from_service_account_file('credentials2.json')
 client = vision.ImageAnnotatorClient(credentials=creds)
+reader = easyocr.Reader(['en'], gpu=False)
 
 
 now = datetime.datetime.now()
@@ -59,9 +61,10 @@ def index():
             cropped_image_path = "static/result/cropped_image_" + dynamic_filename + ".jpg"
             with open(cropped_image_path, 'rb') as f:
                 image_bytes = f.read()
-            image = vision.Image(content=image_bytes)
-            response = client.text_detection(image=image)
-            text = response.text_annotations[0].description
+            # image = vision.Image(content=image_bytes)
+            # response = client.text_detection(image=image)
+            # text = response.text_annotations[0].description
+            text = reader.readtext(image_bytes)
             row = {'timestamp': timestamp,
                    'uploaded_image_path': image_path,
                    'cropped_image_path': cropped_image_path,
