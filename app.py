@@ -84,7 +84,7 @@ def index():
 @app.route("/history")
 def history():
     df = pd.read_csv("ocr_results.csv")
-    df = df.sort_values(by=['timestamp'])
+    df = df.sort_values(by=['result_text'])
     x = list(range(len(df)))
     data = [int(val) for val in df['result_text'].iloc[:]]
 
@@ -104,6 +104,12 @@ def history():
     plt.savefig(plot_path)
 
     return render_template("history.html", df=df, plot_path=plot_path)
+
+
+@app.route("/trend")
+def trend():
+    plot_path = 'static/result/plot.png'
+    return render_template("trend.html", plot_path=plot_path)
 
 
 if __name__ == "__main__":

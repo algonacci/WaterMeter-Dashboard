@@ -5,7 +5,7 @@
     {% include('includes/navbar.html') %}
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 p-3">
+        <div class="col-lg-12 p-3">
           <h3>Water Meter Dashboard History</h3>
           <table class="table table-striped">
             <thead>
@@ -31,10 +31,6 @@
               {% endfor %}
             </tbody>
           </table>
-        </div>
-        <div class="col-lg-6 p-3">
-          <h3>Result Text Trend</h3>
-          <img src="{{ plot_path }}" width="500px" />
         </div>
       </div>
     </div>
