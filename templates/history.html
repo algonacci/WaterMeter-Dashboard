@@ -20,7 +20,7 @@
             <tbody>
               {% for index, row in df.iterrows() %}
               <tr>
-                <td>{{ index + 1 }}</td>
+                <td>ID{{ "%02d" % (index + 1) }}</td>
                 <td>{{ row['timestamp'] }}</td>
                 <td>
                   <img src="{{ row['uploaded_image_path'] }}" width="100px" />
