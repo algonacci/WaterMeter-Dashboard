@@ -10,6 +10,7 @@
           <table class="table table-striped">
             <thead>
               <tr>
+                <th>User ID</th>
                 <th>Timestamp</th>
                 <th>Uploaded Image</th>
                 <th>Cropped Image</th>
@@ -19,6 +20,7 @@
             <tbody>
               {% for index, row in df.iterrows() %}
               <tr>
+                <td>{{ index + 1 }}</td>
                 <td>{{ row['timestamp'] }}</td>
                 <td>
                   <img src="{{ row['uploaded_image_path'] }}" width="100px" />
