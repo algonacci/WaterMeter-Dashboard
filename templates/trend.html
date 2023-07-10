@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% include('includes/head.html') %}
-  <body>
-    {% include('includes/navbar.html') %}
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-lg-12 p-3">
-          <h3>Result Text Trend</h3>
-          <img src="{{ plot_path }}" width="500px" />
-        </div>
+{% include('includes/head.html') %}
+
+<body>
+  {% include('includes/navbar.html') %}
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-lg-12 p-3">
+        <h3>Result Text Trend</h3>
+        <img src="{{ plot_path }}" width="1200px" height="700px" />
       </div>
     </div>
+  </div>
 
-    <!-- {% include('includes/footer.html') %} -->
-  </body>
+  <!-- {% include('includes/footer.html') %} -->
+</body>
+
 </html>

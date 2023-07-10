@@ -8,8 +8,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import torch
 from flask import Flask, render_template, request
-from google.cloud import vision
-from google.oauth2.service_account import Credentials
 from werkzeug.utils import secure_filename
 import easyocr
 
@@ -19,8 +17,6 @@ plt.switch_backend('agg')
 app = Flask(__name__)
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
-creds = Credentials.from_service_account_file('credentials2.json')
-client = vision.ImageAnnotatorClient(credentials=creds)
 reader = easyocr.Reader(['en'], gpu=False)
 
 
@@ -61,9 +57,6 @@ def index():
             cropped_image_path = "static/result/cropped_image_" + dynamic_filename + ".jpg"
             with open(cropped_image_path, 'rb') as f:
                 image_bytes = f.read()
-            # image = vision.Image(content=image_bytes)
-            # response = client.text_detection(image=image)
-            # text = response.text_annotations[0].description
             text = reader.readtext(image_bytes)
             row = {'timestamp': timestamp,
                    'uploaded_image_path': image_path,
@@ -97,7 +90,6 @@ def history():
     for i, val in enumerate(data):
         ax.text(x[i], data[i], str(val), ha='center', va='bottom')
 
-    # save the plot to a file
     plot_path = 'static/result/plot.png'
     if not os.path.exists(os.path.dirname(plot_path)):
         os.makedirs(os.path.dirname(plot_path))
