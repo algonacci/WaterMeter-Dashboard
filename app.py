@@ -1,5 +1,6 @@
 import csv
 import datetime
+import re
 import os
 import uuid
 
@@ -57,17 +58,20 @@ def index():
             cropped_image_path = "static/result/cropped_image_" + dynamic_filename + ".jpg"
             with open(cropped_image_path, 'rb') as f:
                 image_bytes = f.read()
-            text = reader.readtext(image_bytes)
+            result = reader.readtext(image_bytes)
+            text = result[0][1]
+            integers = re.findall(r'\d+', text)
+            cleaned_text = ''.join(integers)
             row = {'timestamp': timestamp,
                    'uploaded_image_path': image_path,
                    'cropped_image_path': cropped_image_path,
-                   'result_text': text}
+                   'result_text': cleaned_text}
             fields = ["timestamp", "uploaded_image_path",
                       "cropped_image_path", "result_text"]
             with open('ocr_results.csv', 'a') as f:
                 writer = csv.DictWriter(f, fieldnames=fields)
                 writer.writerow(row)
-            return render_template("index.html", result=cropped_image_path, water_meter=text)
+            return render_template("index.html", result=cropped_image_path, water_meter=cleaned_text)
         else:
             return render_template("index.html", error="Silahkan upload gambar dengan format JPG")
     else:
