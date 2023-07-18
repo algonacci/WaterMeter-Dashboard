@@ -27,11 +27,16 @@ timestamp = now.strftime('%Y-%m-%d %H:%M:%S')
 
 def allowed_file(filename):
     return '.' in filename and \
-        filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
+        filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
+    return render_template("index.html")
+
+
+@app.route("/predict", methods=["GET", "POST"])
+def predict():
     if request.method == "POST":
         image = request.files["image"]
         if image and allowed_file(image.filename):
@@ -71,11 +76,11 @@ def index():
             with open('ocr_results.csv', 'a') as f:
                 writer = csv.DictWriter(f, fieldnames=fields)
                 writer.writerow(row)
-            return render_template("index.html", result=cropped_image_path, water_meter=cleaned_text)
+            return render_template("predict.html", result=cropped_image_path, water_meter=cleaned_text)
         else:
-            return render_template("index.html", error="Silahkan upload gambar dengan format JPG")
+            return render_template("predict.html", error="Silahkan upload gambar dengan format JPG")
     else:
-        return render_template("index.html")
+        return render_template("predict.html")
 
 
 @app.route("/history")

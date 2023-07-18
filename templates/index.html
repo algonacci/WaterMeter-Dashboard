@@ -8,61 +8,28 @@
       {% if error %}
       <div class="alert alert-danger" role="alert">{{ error }}</div>
       {% endif %}
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Input Gambar</h2>
-          <form action="/" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="photo">Pilih Gambar:</label>
-              <input
-                type="file"
-                name="image"
-                onchange="loadFile(event)"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="col-lg-12 justify-content-center d-flex p-3">
-              <img id="output" width="50%" height="50%" />
-            </div>
-            <div class="row justify-content-center text-center">
-              <div class="col-lg-6 mt-3 mb-3">
-                <input
-                  class="btn btn-primary mt-3"
-                  type="submit"
-                  value="Deteksi!"
-                />
+
+      <header>
+        <div class="container-lg">
+          <div class="row min-vh-100 align-items-center">
+            <div class="col-md-6 mt-5 mt-md-0">
+              <div class="home-img">
+                <img src="/static/logo.jpg" class="mw-100" alt="Profile" />
               </div>
             </div>
-          </form>
-        </div>
-        <div class="col-md-6">
-          <h2>Hasil Prediksi</h2>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card mb-3">
-                <div class="card-body text-center">
-                  <p class="card-text">Deteksi Water Meter</p>
-                  {% if result %}
-                  <img src="{{ result }}" alt="" />
-                  {% endif %}
-                  <h5 class="card-title"></h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="card mb-3">
-                <div class="card-body text-center">
-                  <p class="card-text">Pembacaan Water Meter</p>
-                  {% if water_meter %}
-                  <h5 class="card-title">{{ water_meter }}</h5>
-                  {% endif %}
-                </div>
+            <div class="col-md-6 mt-3 mb-5 mt-md-0 order-md-first">
+              <div class="home-text">
+                <h1 class="mb-1">Water Meter Dashboard</h1>
+                <p class="mt-4 text-muted">
+                  Water Meter Dashboard dibangun untuk memprediksi tingkat
+                  penggunaan air dan menghitung biaya pemakaiannya
+                </p>
+                <a href="/predict" class="btn btn-primary">Prediksi Sekarang</a>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </div>
 
     {% include('includes/footer.html') %}
