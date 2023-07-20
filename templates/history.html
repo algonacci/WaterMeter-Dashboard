@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% include('includes/head.html') %}
-  <body>
-    {% include('includes/navbar.html') %}
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 p-3">
-          <h3>Water Meter Dashboard History</h3>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>User ID</th>
-                <th>Timestamp</th>
-                <th>Uploaded Image</th>
-                <th>Cropped Image</th>
-                <th>Result Text</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for index, row in df.iterrows() %}
-              <tr>
-                <td>ID{{ "%02d" % (index + 1) }}</td>
-                <td>{{ row['timestamp'] }}</td>
-                <td>
-                  <img src="{{ row['uploaded_image_path'] }}" width="100px" />
-                </td>
-                <td>
-                  <img src="{{ row['cropped_image_path'] }}" width="100px" />
-                </td>
-                <td>{{ row['result_text']|safe }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+{% include('includes/head.html') %}
+
+<body style="background-color: #ACD4CB;">
+  {% include('includes/navbar.html') %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 p-3">
+        <h3>Water Meter Dashboard History</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Timestamp</th>
+              <th>Uploaded Image</th>
+              <th>Cropped Image</th>
+              <th>Result Text</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for index, row in df.iterrows() %}
+            <tr>
+              <td>ID{{ "%02d" % (index + 1) }}</td>
+              <td>{{ row['timestamp'] }}</td>
+              <td>
+                <img src="{{ row['uploaded_image_path'] }}" width="100px" />
+              </td>
+              <td>
+                <img src="{{ row['cropped_image_path'] }}" width="100px" />
+              </td>
+              <td>{{ row['result_text']|safe }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
 
-    <!-- {% include('includes/footer.html') %} -->
-  </body>
+  <!-- {% include('includes/footer.html') %} -->
+</body>
+
 </html>

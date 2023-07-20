@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% include('includes/head.html') %}
-  <body>
-    {% include('includes/navbar.html') %}
+{% include('includes/head.html') %}
 
-    <div class="container p-5 min-vh-100">
-      {% if error %}
-      <div class="alert alert-danger" role="alert">{{ error }}</div>
-      {% endif %}
+<body style="background-color: #ACD4CB;">
+  {% include('includes/navbar.html') %}
 
-      <header>
-        <div class="container-lg">
-          <div class="row min-vh-100 align-items-center">
-            <div class="col-md-6 mt-5 mt-md-0">
-              <div class="home-img">
-                <img src="/static/logo.jpg" class="mw-100" alt="Profile" />
-              </div>
+  <div class="container p-5 min-vh-100">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endif %}
+
+    <header>
+      <div class="container-lg">
+        <div class="row min-vh-100 align-items-center">
+          <div class="col-md-6 mt-5 mt-md-0">
+            <div class="home-img">
+              <img src="/static/logo.png" class="mw-100" alt="Profile" />
             </div>
-            <div class="col-md-6 mt-3 mb-5 mt-md-0 order-md-first">
-              <div class="home-text">
-                <h1 class="mb-1">Water Meter Dashboard</h1>
-                <p class="mt-4 text-muted">
-                  Water Meter Dashboard dibangun untuk melakukan pencatatan
-                  secara otomatis terhadap water meter
-                </p>
-                <a href="/predict" class="btn btn-primary">Prediksi Sekarang</a>
-              </div>
+          </div>
+          <div class="col-md-6 mt-3 mb-5 mt-md-0 order-md-first">
+            <div class="home-text">
+              <h1 class="mb-1">Water Meter Dashboard</h1>
+              <p class="mt-4 text-muted">
+                Water Meter Dashboard dibangun untuk melakukan pencatatan
+                secara otomatis terhadap water meter
+              </p>
+              <a href="/predict" class="btn btn-primary">Prediksi Sekarang</a>
             </div>
           </div>
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
+  </div>
 
-    {% include('includes/footer.html') %}
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-      crossorigin="anonymous"
-    ></script>
-    <script src="static/script.js"></script>
-  </body>
+  {% include('includes/footer.html') %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+  <script src="static/script.js"></script>
+</body>
+
 </html>
