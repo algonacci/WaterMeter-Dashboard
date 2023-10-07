@@ -4,6 +4,8 @@ import re
 import os
 import uuid
 
+from google.cloud import vision
+from google.oauth2.service_account import Credentials
 import cv2
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -11,6 +13,8 @@ import torch
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import easyocr
+creds = Credentials.from_service_account_file('credentials2.json')
+client = vision.ImageAnnotatorClient(credentials=creds)
 
 plt.switch_backend('agg')
 
@@ -63,20 +67,23 @@ def predict():
             cropped_image_path = "static/result/cropped_image_" + dynamic_filename + ".jpg"
             with open(cropped_image_path, 'rb') as f:
                 image_bytes = f.read()
-            result = reader.readtext(image_bytes)
-            text = result[0][1]
-            integers = re.findall(r'\d+', text)
-            cleaned_text = ''.join(integers)
+            image = vision.Image(content=image_bytes)
+            response = client.text_detection(image=image)
+            text = response.text_annotations[0].description
+            # result = reader.readtext(image_bytes)
+            # text = result[0][1]
+            # integers = re.findall(r'\d+', text)
+            # cleaned_text = ''.join(integers)
             row = {'timestamp': timestamp,
                    'uploaded_image_path': image_path,
                    'cropped_image_path': cropped_image_path,
-                   'result_text': cleaned_text}
+                   'result_text': text}
             fields = ["timestamp", "uploaded_image_path",
                       "cropped_image_path", "result_text"]
             with open('ocr_results.csv', 'a') as f:
                 writer = csv.DictWriter(f, fieldnames=fields)
                 writer.writerow(row)
-            return render_template("predict.html", result=cropped_image_path, water_meter=cleaned_text)
+            return render_template("predict.html", result=cropped_image_path, water_meter=text)
         else:
             return render_template("predict.html", error="Silahkan upload gambar dengan format JPG")
     else:
